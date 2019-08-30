@@ -6,9 +6,6 @@
 #include <QPainter>
 #include <QGraphicsEffect>
 #include <QGraphicsView>
-#include <QLineEdit>
-#include <QPushButton>
-#include <QGridLayout>
 #include <QList>
 #include <QString>
 #include "node.h"
@@ -24,10 +21,10 @@ class Form : public QWidget
 
 private:
     Ui::Form *ui;
-    Struct *inner;
+    Struct1 *inner;
 
 public:
-    explicit Form(Struct*, QWidget *parent = 0);
+    explicit Form(Struct1*, QWidget *parent = 0);
     QGraphicsView* view;
     QGraphicsScene* scene;
     QGraphicsItem* item;

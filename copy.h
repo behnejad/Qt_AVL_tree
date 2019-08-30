@@ -1,4 +1,3 @@
-#include <QtCore>
 // An AVL tree node
 
 struct node

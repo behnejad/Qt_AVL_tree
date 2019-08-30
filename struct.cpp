@@ -2,30 +2,30 @@
 #include <qDebug>
 #include "node.h"
 
-Struct::Struct()
+Struct1::Struct()
 {
-    this->root = new Node();
+//    this->root = new Node();
 }
 
-Struct::~Struct()
+Struct1::~Struct()
 {
 }
 
-int Struct::max(int a, int b)
+int Struct1::max(int a, int b)
 {
     return (a > b)? a : b;
 }
 
-int Struct::heightfunc(Node* N)
+int Struct1::heightfunc(struct node* N)
 {
     if (N == 0)
         return 0;
     return N->getHeight();
 }
 
-Node* Struct::newNode(int key)
+struct node* Struct1::newNode(int key)
 {
-    Node* node = new Node();
+    struct node* node = new Node();
     node->setValue(key);
     node->left   = 0;
     node->right  = 0;
@@ -34,10 +34,10 @@ Node* Struct::newNode(int key)
     return node;
 }
 
-Node* Struct::rightRotate(Node* y)
+struct node* Struct1::rightRotate(struct node* y)
 {
-    Node* x = y->left;
-    Node* T2 = x->right;
+    struct node* x = y->left;
+    struct node* T2 = x->right;
 
     // Perform rotation
     x->right = y;
@@ -51,10 +51,10 @@ Node* Struct::rightRotate(Node* y)
     return x;
 }
 
-Node* Struct::leftRotate(Node* x)
+struct node* Struct1::leftRotate(struct node* x)
 {
-    Node* y = x->right;
-    Node* T2 = y->left;
+    struct node* y = x->right;
+    struct node* T2 = y->left;
 
     // Perform rotation
     y->left = x;
@@ -68,14 +68,14 @@ Node* Struct::leftRotate(Node* x)
     return y;
 }
 
-int Struct::getBalance(Node* N)
+int Struct1::getBalance(struct node* N)
 {
     if (N == 0)
         return 0;
     return this->heightfunc(N->left) - this->heightfunc(N->right);
 }
 
-Node* Struct::insert(Node* node, int key)
+struct node* Struct1::insert(struct node* node, int key)
 {
     /* 1.  Perform the normal BST rotation */
     if (node == 0)
@@ -121,9 +121,9 @@ Node* Struct::insert(Node* node, int key)
     return node;
     }
 
-    Node* Struct::minValueNode(Node* node)
+    struct node* Struct1::minValueNode(struct node* node)
     {
-    Node* current = node;
+    struct node* current = node;
 
     /* loop down to find the leftmost leaf */
     while (current->left != 0)
@@ -132,7 +132,7 @@ Node* Struct::insert(Node* node, int key)
 //    return current;
 }
 
-Node* Struct::deleteNode(Node* root, int key)
+struct node* Struct1::deleteNode(struct node* root, int key)
 {
 // STEP 1: PERFORM STANDARD BST DELETE
 
@@ -156,7 +156,7 @@ Node* Struct::deleteNode(Node* root, int key)
         // node with only one child or no child
         if( (root->left == 0) || (root->right == 0) )
         {
-            Node* temp = root->left ? root->left : root->right;
+            struct node* temp = root->left ? root->left : root->right;
 
             // No child case
             if(temp == 0)
@@ -167,13 +167,13 @@ Node* Struct::deleteNode(Node* root, int key)
             else // One child case
              *root = *temp; // Copy the contents of the non-empty child
 
-            delete temp;
+            //delete temp;
         }
         else
         {
             // node with two children: Get the inorder successor (smallest
             // in the right subtree)
-            Node* temp = this->minValueNode(root->right);
+            struct node* temp = this->minValueNode(root->right);
 
             // Copy the inorder successor's data to this node
             root->setValue(temp->getValue());
@@ -221,7 +221,7 @@ Node* Struct::deleteNode(Node* root, int key)
     return root;
 }
 
-void Struct::preOrder(Node* node)
+void Struct1::preOrder(struct node* node)
 {
     if(node != 0)
     {

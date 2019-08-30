@@ -14,13 +14,13 @@ RC_ICONS = 1.ico
 
 SOURCES += main.cpp\
         widget.cpp \
-    copy.cpp \
     struct.cpp
 
 HEADERS  += widget.h \
     node.h \
     struct.h \
-    global.h
+    global.h \
+    copy.h
 
 OTHER_FILES += \
     node.py

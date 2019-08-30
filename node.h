@@ -30,7 +30,7 @@ public:
     {height = in;}
     void setHeight2(int in)
     {height2 = in;}
-    ~Node(){}
+    ~Node();
 };
 
 #endif // NODE_H

@@ -14,7 +14,7 @@
 #include <math.h>
 using namespace std;
 
-Form::Form(Struct* in, QWidget *parent)
+Form::Form(Struct1& in, QWidget *parent)
     : QWidget(parent) , ui(new Ui::Form), inner(in)
 {
     ui->setupUi(this);
@@ -46,10 +46,10 @@ void Form::view_in_console(Node * root, int level)
         view_in_console(root->right, level+1);
 //        fprintf(stderr, "\n");
         string += "\n";
-        if (root == inner->root)
+        if (root == inner.root)
 //            fprintf(stderr, "Root -> ");
             string += "Root -> ";
-        for (int i = 0 ; i < level && root != inner->root ; i++)
+        for (int i = 0 ; i < level && root != inner.root ; i++)
 //            fprintf(stderr, "           ");
             string += "                 ";
 //        fprintf(stderr, "%d",  root->getValue());
@@ -74,7 +74,7 @@ void Form::console()
 {
     ui->textEdit->clear();
     string = "";
-    view_in_console(inner->root, 0);
+    view_in_console(inner.root, 0);
 //    fprintf(stderr, "\n");
     string += "\n";
     ui->textEdit->setText(string);
@@ -187,34 +187,34 @@ void Form::del_all()
 
 void Form::call_add_func()
 {
-    inner->root = inner->insert(inner->root, ui->add->text().toInt());
+    inner.root = inner.insert(inner.root, ui->add->text().toInt());
     ui->label_3->setText("     " + ui->add->text() + "   added to AVL tree  ------->");
     ui->add->clear();
 //    del_all();
 //    console();
 //    draw_tree();
 //    printf("\n");
-//    inner->preOrder(inner->root);
+//    inner.preOrder(inner.root);
 //    printf("\n");
 }
 
 void Form::call_del_func()
 {
-    inner->root = inner->deleteNode(inner->root, ui->del->text().toInt());
+    inner.root = inner.deleteNode(inner.root, ui->del->text().toInt());
     ui->label_3->setText("     " + ui->del->text() + "   deleted from AVL tree  ------->");
     ui->del->clear();
 //    del_all();
 //    draw_tree();
 //    console();
 //    printf("\n");
-//    inner->preOrder(inner->root);
+//    inner.preOrder(inner.root);
 //    printf("\n");
 }
 
 void Form::draw_tree()
-{
+{/*
     QQueue<Node *> q;
-    Node* p = inner->root;
+    Node* p = inner.root;
     p->setHeight2(0);
     p->setWidth(0);
     q.enqueue(p);
@@ -247,4 +247,5 @@ void Form::draw_tree()
             add_node(a, b, p->right->getValue());
         }
     }
+    */
 }
